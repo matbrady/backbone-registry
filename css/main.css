@@ -3960,3 +3960,48 @@ td.visible-print {
     display: none !important; } }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold; }
+
+#login {
+  background: #eee;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px; }
+  #login h1 {
+    font-weight: 100;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 0 0 20px; }
+  #login input {
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 20px; }
+    #login input:first-child {
+      margin-top: 0px; }
+  #login input[type='password'] {
+    font-size: 30px;
+    font-size: 3rem;
+    line-height: 0; }
+    #login input[type='password']::-webkit-input-placeholder {
+      font-size: 18px;
+      font-size: 1.8rem;
+      line-height: 2; }
+    #login input[type='password']:-moz-placeholder {
+      font-size: 18px;
+      font-size: 1.8rem;
+      line-height: 2; }
+    #login input[type='password']::-moz-placeholder {
+      font-size: 18px;
+      font-size: 1.8rem;
+      line-height: 2; }
+    #login input[type='password']:-ms-input-placeholder {
+      font-size: 18px;
+      font-size: 1.8rem;
+      line-height: 2; }
+  #login .btn {
+    float: right;
+    margin-top: 20px;
+    width: 100%; }
+  #login .form-group {
+    margin-bottom: 0px; }

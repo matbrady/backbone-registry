@@ -1,9 +1,9 @@
 // Registry Application
 
-define('app', ['$.bootstrap'], function($) {
+define('app', ['$.bootstrap', 'views/login'], function($, LoginView) {
 
-
-	console.log('Hello World');
+	var loginView = new LoginView();
 
 	return;
+
 });

@@ -43,11 +43,6 @@
       "underscore": "../lib/underscore",
       "backbone": "../lib/backbone",
       "localstorage": "../lib/backbone.localStorage",
-
-      "model": "models",
-      "collection": "collections",
-      "view": "views",
-      "router": "routers"
     }
 
   };
