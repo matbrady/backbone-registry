@@ -1,6 +1,11 @@
 // Login View
 
-define('views/login', ['jquery', 'backbone', 'underscore'], function($, Backbone, underscore) {
+define('login/view', ['jquery', 'backbone', 'underscore'], function($, Backbone, _) {
+
+	// Errors
+	// no email
+	// no password
+	// email not valid
 
 	var LoginView = Backbone.View.extend({
 
@@ -8,8 +13,9 @@ define('views/login', ['jquery', 'backbone', 'underscore'], function($, Backbone
 
 		events: {
 			'click #submit': 'submit',
-			'keyup input': 'enableSubmitBtn',
-			'blur input': 'validateOffFocus'
+			'keyup input#email': 'validateEmail',
+			'keyup input#password': 'enableSubmitBtn',
+			// 'blur input': 'validateOffFocus'
 		},
 
 		initialize: function() {
@@ -17,6 +23,19 @@ define('views/login', ['jquery', 'backbone', 'underscore'], function($, Backbone
 			this.$email = this.$('#email');
 			this.$password = this.$('#password');
 			this.$submit = this.$('#submit');
+
+			// Listeners
+			this.listenTo( this.model, 'change', this.showValidation);
+		},
+
+		// Validate Inputs
+		validateEmail: _.debounce(function( evt ) {
+			this.model.validateEmail( this.$email.val() );
+		}, 200),
+
+		showValidation: function() {
+			console.log('updating view with validation');
+
 		},
 
 
@@ -29,27 +48,6 @@ define('views/login', ['jquery', 'backbone', 'underscore'], function($, Backbone
 				this.$submit.attr('disabled', 'disabled');
 			}
 		},
-
-
-		//
-		validateOffFocus: function( evt ) {
-			switch ( evt.target.id ) {
-				case 'email':
-					var isValid = this.validateEmail( this.$email.val() );
-					console.log(isValid);
-				break;
-				case 'password':
-				break;
-			}
-		},
-
-
-		// Validate Email Address
-		validateEmail: function( email ) { 
-		    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		    return re.test(email);
-		},
-
 
 		// Submit the Form
 		submit: function( evt ) {
